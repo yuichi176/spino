@@ -1,0 +1,56 @@
+openapi: 3.0.3
+info:
+  title: Today's Wildlife API
+  description: API for Today's Wildlife application
+  version: 1.0.0
+tags:
+  - name: wildlife
+paths:
+  /wildlifes:
+    get:
+      summary: get wildlife information
+      operationId: getWildlife
+      tags:
+        - wildlife
+      parameters:
+        - name: day
+          in: query
+          schema:
+            type: string
+            example: "2023-04-11"
+      responses:
+        "200":
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: "#/components/schemas/WildlifeInfo"
+components:
+  schemas:
+    WildlifeInfo:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "オウム"
+        habitat:
+          type: string
+          example: "南アメリカ"
+        description:
+          type: string
+          maxLength: 300
+          example: "オウムは、南アメリカ原産の鳥類で、世界中で人気のペットとして飼育されています。多色で美しい羽毛と、人間の言葉を学ぶことができる知能が特徴です。生息地は、森林や沼地、草原など多岐にわたります。食性は、種によって異なりますが、果物、種子、昆虫などを食べます。"
+        tips:
+          type: string
+          maxLength: 100
+          example: "オウムは、人間の言葉を学ぶことができるだけでなく、ミュージシャンやサーカス団などでも活躍することがあります。オウムは、飼い主になつくことが多いですが、飼い主に注意を払わないと、ストレスを感じたり、不健康になることもあります。"
+        createdAt:
+          type: string
+          format: date
+          example: "2023-04-11"
+      required:
+        - name
+        - habitat
+        - description
+        - tips
+        - createdAt
