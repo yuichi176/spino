@@ -7,7 +7,12 @@
       "typescript-axios": {
         "generatorName": "typescript-axios",
         "inputSpec": "../api-schema/openapi.yaml",
-        "output": "./types/typescript-axios"
+        "output": "./gen-src",
+        "additionalProperties": {
+          "withSeparateModelsAndApi": "true",
+          "apiPackage": "api-client",
+          "modelPackage": "types"
+        }
       }
     }
   }

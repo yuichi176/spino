@@ -13,7 +13,7 @@ paths:
       tags:
         - wildlife
       parameters:
-        - name: day
+        - name: date
           in: query
           schema:
             type: string
@@ -46,7 +46,6 @@ components:
           example: "オウムは、人間の言葉を学ぶことができるだけでなく、ミュージシャンやサーカス団などでも活躍することがあります。オウムは、飼い主になつくことが多いですが、飼い主に注意を払わないと、ストレスを感じたり、不健康になることもあります。"
         createdAt:
           type: string
-          format: date
           example: "2023-04-11"
       required:
         - name
