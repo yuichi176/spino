@@ -12,6 +12,11 @@ group = "com.example"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
+tasks.jar {
+	// xxx-plain.jarを生成しない設定
+	enabled = false
+}
+
 repositories {
 	mavenCentral()
 }

@@ -1,4 +1,5 @@
 steps:
+  # Copy api-schema dir to build dir
   - name: bash
     script: cp -r ./api-schema ./spino-be/api-schema
   # Build the container image
