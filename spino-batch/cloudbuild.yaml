@@ -4,7 +4,7 @@ steps:
       - gcloud
       - functions
       - deploy
-      - nodejs-pubsub-function
+      - update-wildlife-info-function
       - --gen2
       - --runtime=nodejs18
       - --region=asia-northeast1
