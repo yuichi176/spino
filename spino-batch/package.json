@@ -1,0 +1,13 @@
+{
+  "name": "spino-batch",
+  "version": "1.0.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "author": "Yuichi Sugiyama",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "dependencies": {
+    "@google-cloud/functions-framework": "^3.0.0"
+  }
+}
