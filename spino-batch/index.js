@@ -27,6 +27,6 @@ functions.cloudEvent('updateWildlifeInfo', cloudEvent => {
         ? Buffer.from(base64name, 'base64').toString()
         : 'World';
 
-    console.log(`Hello, ${name}!`);
+    console.log(`test Hello, ${name}!`);
 });
 // [END functions_cloudevent_pubsub]
