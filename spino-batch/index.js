@@ -14,12 +14,11 @@ const configuration = new Configuration({
 
 functions.cloudEvent('updateWildlifeInfo', cloudEvent => {
 
-    // 現在の日付を取得
+    // 明日の日付を取得 'YYYY-MM-DD'
     const today = new Date();
-    const year = today.getFullYear();
-    const month = ("0" + (today.getMonth() + 1)).slice(-2);
-    const day = ("0" + today.getDate()).slice(-2);
-    const formattedDate = `${year}-${month}-${day}`;
+    const tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate() + 1);
+    const formattedDate = tomorrow.toISOString().slice(0, 10);
 
     // chatGPTから生物情報を生成
     const openai = new OpenAIApi(configuration);
