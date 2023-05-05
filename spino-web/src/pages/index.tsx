@@ -24,7 +24,7 @@ export default function Home() {
         <p>{wildlife?.name}</p>
         <p>{wildlife?.habitat}</p>
         <p>{wildlife?.description}</p>
-        <p>{wildlife?.tips}</p>
+        <p>{wildlife?.trivia}</p>
       </div>
     </main>
   )

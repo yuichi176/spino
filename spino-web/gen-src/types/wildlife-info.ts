@@ -43,7 +43,7 @@ export interface WildlifeInfo {
      * @type {string}
      * @memberof WildlifeInfo
      */
-    'tips': string;
+    'trivia'?: string;
     /**
      * 
      * @type {string}

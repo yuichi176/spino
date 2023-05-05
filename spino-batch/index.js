@@ -1,32 +1,30 @@
-// Copyright 2021 Google LLC
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
 'use strict';
 
-// [START functions_cloudevent_pubsub]
 const functions = require('@google-cloud/functions-framework');
-
-// Register a CloudEvent callback with the Functions Framework that will
-// be executed when the Pub/Sub trigger topic receives a message.
-functions.cloudEvent('updateWildlifeInfo', cloudEvent => {
-    // The Pub/Sub message is passed as the CloudEvent's data payload.
-    const base64name = cloudEvent.data.message.data;
-
-    const name = base64name
-        ? Buffer.from(base64name, 'base64').toString()
-        : 'World';
-
-    console.log(`test Hello, ${name}!`);
+const Firestore = require('@google-cloud/firestore');
+const db = new Firestore({
+    projectId: 'spino-385712',
+    keyFilename: './spino-batch-service-account-key.json',
 });
-// [END functions_cloudevent_pubsub]
+
+functions.cloudEvent('updateWildlifeInfo', cloudEvent => {
+    const docRef = db.collection('WildlifeInfo').doc();
+
+    // 現在の日付を取得
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = ("0" + (today.getMonth() + 1)).slice(-2);
+    const day = ("0" + today.getDate()).slice(-2);
+    const formattedDate = `${year}-${month}-${day}`;
+
+    // TODO: chatGPT APIから取得
+
+    const wildLife = {
+        name: "アカガエル",
+        habitat: "北アメリカ",
+        description: "アカガエルは、北アメリカ原産のカエルの一種で、赤や褐色の体色が特徴的です。夜行性で、昼間は木の下などで休息します。雑食性で、昆虫やミミズ、小型の爬虫類などを食べます。アカガエルは、皮膚から毒を分泌することができますが、一般的には人間に対して致命的ではありません。",
+        trivia: "アカガエルは、気温が下がると冬眠状態に入ります。また、卵や幼体は水中で生活するため、水場の近くに生息することが多いです。",
+        createdAt: formattedDate,
+    };
+    docRef.set(wildLife).then(r => console.log(`${formattedDate}: success update!`));
+});

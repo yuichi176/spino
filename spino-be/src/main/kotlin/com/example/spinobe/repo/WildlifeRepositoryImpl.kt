@@ -18,7 +18,7 @@ class WildlifeRepositoryImpl(
             name = data["name"] as String,
             habitat = data["habitat"] as String,
             description = data["description"] as String,
-            tips = data["tips"] as String,
+            trivia = data["trivia"] as String,
             createdAt = data["createdAt"] as String
         )
     }
