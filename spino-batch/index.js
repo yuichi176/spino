@@ -2,13 +2,17 @@
 
 const functions = require('@google-cloud/functions-framework');
 const Firestore = require('@google-cloud/firestore');
+const { Configuration, OpenAIApi } = require("openai");
+
 const db = new Firestore({
     projectId: 'spino-385712',
     keyFilename: './spino-batch-service-account-key.json',
 });
+const configuration = new Configuration({
+    apiKey: process.env.OPENAI_API_KEY,
+});
 
 functions.cloudEvent('updateWildlifeInfo', cloudEvent => {
-    const docRef = db.collection('WildlifeInfo').doc();
 
     // 現在の日付を取得
     const today = new Date();
@@ -17,14 +21,19 @@ functions.cloudEvent('updateWildlifeInfo', cloudEvent => {
     const day = ("0" + today.getDate()).slice(-2);
     const formattedDate = `${year}-${month}-${day}`;
 
-    // TODO: chatGPT APIから取得
+    // chatGPTから生物情報を生成
+    const openai = new OpenAIApi(configuration);
+    openai.createCompletion({
+        model: "text-davinci-003",
+        prompt: "適当な生物を1つ選んで'{name, habitat(国・地域), description(300文字以内), trivia((100文字以内)}'のJSON形式で日本語で紹介してください。",
+        temperature: 0.8,
+        max_tokens: 500,
+    }).then((response) => {
+        const wildLife = JSON.parse(response.data.choices[0].text);
+        wildLife.createdAt = formattedDate
 
-    const wildLife = {
-        name: "アカガエル",
-        habitat: "北アメリカ",
-        description: "アカガエルは、北アメリカ原産のカエルの一種で、赤や褐色の体色が特徴的です。夜行性で、昼間は木の下などで休息します。雑食性で、昆虫やミミズ、小型の爬虫類などを食べます。アカガエルは、皮膚から毒を分泌することができますが、一般的には人間に対して致命的ではありません。",
-        trivia: "アカガエルは、気温が下がると冬眠状態に入ります。また、卵や幼体は水中で生活するため、水場の近くに生息することが多いです。",
-        createdAt: formattedDate,
-    };
-    docRef.set(wildLife).then(r => console.log(`${formattedDate}: success update!`));
+        // firestoreに保存
+        const docRef = db.collection('WildlifeInfo').doc();
+        docRef.set(wildLife).then(r => console.log(`${formattedDate}: success update!`));
+        });
 });
