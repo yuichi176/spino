@@ -1,0 +1,16 @@
+steps:
+  # Copy api-schema dir to build dir
+  - name: bash
+    script: cp -r ./api-schema ./spino-web/api-schema
+  # Build the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/spino-385712/spino-web', './spino-web']
+  # Push the container image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/spino-385712/spino-web']
+  # Deploy container image to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args: ['run', 'deploy', 'spino-web', '--image', 'gcr.io/spino-385712/spino-web', '--region', 'asia-northeast1']
+images:
+  - gcr.io/spino-385712/spino-web
