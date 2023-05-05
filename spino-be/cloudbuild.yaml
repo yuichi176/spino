@@ -1,4 +1,6 @@
 steps:
+  - name: bash
+    script: cp -r ./api-schema ./spino-be/api-schema
   # Build the container image
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/spino-385712/spino-be', './spino-be']
