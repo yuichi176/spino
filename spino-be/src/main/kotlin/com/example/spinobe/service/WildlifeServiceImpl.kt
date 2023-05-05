@@ -10,6 +10,6 @@ class WildlifeServiceImpl(
     private val wildlifeRepository: WildlifeRepository
 ) : WildlifeApiService {
 
-    override fun getWildlife(date: String?): WildlifeInfo =
+    override fun getWildlife(date: String): WildlifeInfo =
         wildlifeRepository.findByDate(date)
 }

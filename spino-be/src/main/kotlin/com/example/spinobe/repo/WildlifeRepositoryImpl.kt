@@ -11,7 +11,7 @@ class WildlifeRepositoryImpl(
 
     val wildlireInfoCollectionRef = db.collection("WildlifeInfo")
 
-    override fun findByDate(date: String?): WildlifeInfo {
+    override fun findByDate(date: String): WildlifeInfo {
         val future = wildlireInfoCollectionRef.whereEqualTo("createdAt", date).get()
         val data = future.get().documents[0].data
         return WildlifeInfo(

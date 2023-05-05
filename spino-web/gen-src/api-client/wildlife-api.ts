@@ -32,11 +32,13 @@ export const WildlifeApiAxiosParamCreator = function (configuration?: Configurat
         /**
          * 
          * @summary get wildlife information
-         * @param {string} [date] 
+         * @param {string} date 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getWildlife: async (date?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getWildlife: async (date: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'date' is not null or undefined
+            assertParamExists('getWildlife', 'date', date)
             const localVarPath = `/wildlifes`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -77,11 +79,11 @@ export const WildlifeApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary get wildlife information
-         * @param {string} [date] 
+         * @param {string} date 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getWildlife(date?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WildlifeInfo>> {
+        async getWildlife(date: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WildlifeInfo>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getWildlife(date, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -98,11 +100,11 @@ export const WildlifeApiFactory = function (configuration?: Configuration, baseP
         /**
          * 
          * @summary get wildlife information
-         * @param {string} [date] 
+         * @param {string} date 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getWildlife(date?: string, options?: any): AxiosPromise<WildlifeInfo> {
+        getWildlife(date: string, options?: any): AxiosPromise<WildlifeInfo> {
             return localVarFp.getWildlife(date, options).then((request) => request(axios, basePath));
         },
     };
@@ -118,12 +120,12 @@ export class WildlifeApi extends BaseAPI {
     /**
      * 
      * @summary get wildlife information
-     * @param {string} [date] 
+     * @param {string} date 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WildlifeApi
      */
-    public getWildlife(date?: string, options?: AxiosRequestConfig) {
+    public getWildlife(date: string, options?: AxiosRequestConfig) {
         return WildlifeApiFp(this.configuration).getWildlife(date, options).then((request) => request(this.axios, this.basePath));
     }
 }

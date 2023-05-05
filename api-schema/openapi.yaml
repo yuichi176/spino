@@ -18,6 +18,7 @@ paths:
           schema:
             type: string
             example: "2023-04-11"
+          required: true
       responses:
         "200":
           description: OK
