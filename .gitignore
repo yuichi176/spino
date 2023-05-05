@@ -21,3 +21,4 @@ gradle-app.setting
 .classpath
 
 spino-be-service-account-key.json
+spino-github-actions-service-account-key.json
