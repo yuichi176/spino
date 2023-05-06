@@ -17,15 +17,20 @@ RUN \
 FROM base AS builder
 WORKDIR /app
 
-ARG bff_protocol=https
-ARG bff_base_domain=spino-web-hhamkls5ya-an.a.run.app
-ARG be_protocol=https
-ARG be_base_domain=spino-be-hhamkls5ya-an.a.run.app
+ARG bff_protocol
+ARG bff_base_domain
+ARG be_protocol
+ARG be_base_domain
 
-ENV NEXT_PUBLIC_BFF_PROTOCOL=$bff_protocol
-ENV NEXT_PUBLIC_BFF_BASE_DOMAIN=$bff_base_domain
-ENV NEXT_PUBLIC_BE_PROTOCOL=$be_protocol
-ENV NEXT_PUBLIC_BE_BASE_DOMAIN=$be_base_domain
+ENV NEXT_PUBLIC_BFF_PROTOCOL=${bff_protocol}
+ENV NEXT_PUBLIC_BFF_BASE_DOMAIN=${bff_base_domain}
+ENV NEXT_PUBLIC_BE_PROTOCOL=${be_protocol}
+ENV NEXT_PUBLIC_BE_BASE_DOMAIN=${be_base_domain}
+
+RUN echo "$bff_protocol"
+RUN echo "$bff_base_domain"
+RUN echo "$be_protocol"
+RUN echo "$be_base_domain"
 
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .

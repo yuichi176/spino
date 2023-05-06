@@ -15,15 +15,15 @@ steps:
     ]
   # Push the container image to Container Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$PROJECT_ID/spino-web']
+    args: ['push', 'gcr.io/$PROJECT_ID/spino-web-dev']
   # Deploy container image to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
-    args: ['run', 'deploy', 'spino-web', '--image', 'gcr.io/$PROJECT_ID/spino-web', '--region', 'asia-northeast1']
+    args: ['run', 'deploy', 'spino-web-dev', '--image', 'gcr.io/$PROJECT_ID/spino-web-dev', '--region', 'asia-northeast1']
 substitutions:
   _BFF_PROTOCOL: https
   _BFF_BASE_DOMAIN: myrecord-web-tyqu5egcpq-an.a.run.app
   _BE_PROTOCOL: https
-  _BE_BASE_DOMAIN: myrecord-rest-api-tyqu5egcpq-an.a.run.app
+  _BE_BASE_DOMAIN: spino-be-dev-hhamkls5ya-an.a.run.app
 images:
-  - gcr.io/$PROJECT_ID/spino-web
+  - gcr.io/$PROJECT_ID/spino-web-dev
