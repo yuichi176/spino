@@ -26,8 +26,8 @@ export default function Home() {
     <main
       className="flex flex-col items-center justify-between py-10 px-5"
     >
-      <h1 className="mb-5">本日のいきもの</h1>
-      <div className="max-w-md shadow-md box-border p-10">
+      <h1 className="text-lg mb-5">本日のいきもの</h1>
+      <div className="max-w-md shadow-#1 box-border p-10 rounded-md">
         <div>
           <div className="mb-5">
             <p className="text-lg font-bold">{wildlife?.name}</p>
