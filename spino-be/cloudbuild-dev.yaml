@@ -4,13 +4,13 @@ steps:
     script: cp -r ./api-schema ./spino-be/api-schema
   # Build the container image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/spino-be', './spino-be']
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/spino-be-dev', './spino-be']
   # Push the container image to Container Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$PROJECT_ID/spino-be']
+    args: ['push', 'gcr.io/$PROJECT_ID/spino-be-dev']
   # Deploy container image to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
-    args: ['run', 'deploy', 'spino-be', '--image', 'gcr.io/$PROJECT_ID/spino-be', '--region', 'asia-northeast1']
+    args: ['run', 'deploy', 'spino-be-dev', '--image', 'gcr.io/$PROJECT_ID/spino-be-dev', '--region', 'asia-northeast1']
 images:
-  - gcr.io/$PROJECT_ID/spino-be
+  - gcr.io/$PROJECT_ID/spino-be-dev
