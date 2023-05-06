@@ -5,3 +5,32 @@
 body {
 
 }
+
+.bouncybox {
+    height: 100px;
+    width: 40px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+}
+
+.bouncy {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #008080;
+    animation: bouncy 2s infinite ease-in-out;
+}
+
+@keyframes bouncy {
+    40% {
+        height: 40px;
+    }
+    50% {
+        transform: translate(0, 65px);
+        height: 34px;
+        border-radius: 20px;
+    }
+    65% {
+        height: 40px;
+    }
+}

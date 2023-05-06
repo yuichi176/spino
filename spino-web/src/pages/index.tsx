@@ -12,19 +12,33 @@ export default function Home() {
           `${env.BFF_PROTOCOL}://${env.BFF_BASE_DOMAIN}/api/wildlifes?date=${date}`,
           (url) => axios.get(url).then(res => res.data)
       )
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return (
+      <div className="fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]">
+        <div className="bouncybox">
+          <div className="bouncy"></div>
+        </div>
+        <p>loading</p>
+      </div>
+  )
   if (error) return <div>Failed to load</div>;
 
   return (
     <main
-      className={`flex flex-col items-center justify-between p-24`}
+      className="flex flex-col items-center justify-between py-10 px-5"
     >
-      <h1>本日のいきもの</h1>
-      <div>
-        <p>{wildlife?.name}</p>
-        <p>{wildlife?.habitat}</p>
-        <p>{wildlife?.description}</p>
-        <p>{wildlife?.trivia}</p>
+      <h1 className="mb-5">本日のいきもの</h1>
+      <div className="max-w-md shadow-md box-border p-10">
+        <div>
+          <div className="mb-5">
+            <p className="text-lg font-bold">{wildlife?.name}</p>
+            <p className="text-sm">{wildlife?.habitat}</p>
+          </div>
+          <p className="mb-5 text-sm">{wildlife?.description}</p>
+          <div>
+            <h1 className="text-[#008080] font-bold">豆知識</h1>
+            <p className="text-sm">{wildlife?.trivia}</p>
+          </div>
+        </div>
       </div>
     </main>
   )

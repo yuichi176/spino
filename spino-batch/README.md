@@ -8,3 +8,8 @@ $ gcloud functions deploy update-wildlife-info-function \
 --entry-point=updateWildlifeInfo \
 --trigger-topic=update-wildlife-info
 ```
+
+## イベントのパブリッシュ
+```shell
+$ gcloud pubsub topics publish update-wildlife-info --message="test"
+```
