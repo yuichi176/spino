@@ -10,7 +10,7 @@ steps:
       '--build-arg', 'bff_base_domain=${_BFF_BASE_DOMAIN}',
       '--build-arg', 'be_protocol=${_BE_PROTOCOL}',
       '--build-arg', 'be_base_domain=${_BE_BASE_DOMAIN}',
-      '-t', 'gcr.io/$PROJECT_ID/spino-web-dev',
+      '-t', 'gcr.io/$PROJECT_ID/spino-web',
       './spino-web'
     ]
   # Push the container image to Container Registry
@@ -22,8 +22,8 @@ steps:
     args: ['run', 'deploy', 'spino-web', '--image', 'gcr.io/$PROJECT_ID/spino-web', '--region', 'asia-northeast1']
 substitutions:
   _BFF_PROTOCOL: https
-  _BFF_BASE_DOMAIN: myrecord-web-tyqu5egcpq-an.a.run.app
+  _BFF_BASE_DOMAIN: spino-web-hhamkls5ya-an.a.run.app
   _BE_PROTOCOL: https
-  _BE_BASE_DOMAIN: myrecord-rest-api-tyqu5egcpq-an.a.run.app
+  _BE_BASE_DOMAIN: spino-be-hhamkls5ya-an.a.run.app
 images:
   - gcr.io/$PROJECT_ID/spino-web
