@@ -27,8 +27,9 @@ export default function Home() {
       className="flex flex-col items-center justify-between py-10 px-5"
     >
       <h1 className="text-lg mb-5">本日のいきもの</h1>
-      <div className="max-w-md shadow-#1 box-border p-10 rounded-md">
+      <div className="max-w-md shadow-#1 box-border py-8 px-10 rounded-md">
         <div>
+          <p className="text-xs mb-2">{wildlife?.createdAt}</p>
           <div className="mb-5">
             <p className="text-lg font-bold">{wildlife?.name}</p>
             <p className="text-sm">{wildlife?.habitat}</p>
