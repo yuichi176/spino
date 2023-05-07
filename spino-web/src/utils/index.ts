@@ -6,3 +6,15 @@ export const getToday = (): string => {
     const d = ('00' + date.getDate()).slice(-2)
     return y + '-' + m + '-' + d
 }
+
+export const getBeforeDate = (dateString: string): string => {
+    const date = new Date(dateString);
+    date.setDate(date.getDate() - 1);
+    return date.toISOString().slice(0, 10);
+}
+
+export const getNextDate = (dateString: string): string => {
+    const date = new Date(dateString);
+    date.setDate(date.getDate() + 1);
+    return date.toISOString().slice(0, 10);
+}
