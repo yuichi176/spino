@@ -4,15 +4,9 @@ steps:
     script: cp -r ./api-schema ./spino-web/api-schema
   # Build the container image
   - name: 'gcr.io/cloud-builders/docker'
-    args: [
-      'build',
-      '--build-arg', 'bff_protocol=${_BFF_PROTOCOL}',
-      '--build-arg', 'bff_base_domain=${_BFF_BASE_DOMAIN}',
-      '--build-arg', 'be_protocol=${_BE_PROTOCOL}',
-      '--build-arg', 'be_base_domain=${_BE_BASE_DOMAIN}',
-      '-t', 'gcr.io/$PROJECT_ID/spino-web',
-      './spino-web'
-    ]
+    entrypoint: 'bash'
+    args: ['-c', 'build --build-arg bff_protocol=$_BFF_PROTOCOL --build-arg bff_base_domain=$$BFF_BASE_DOMAIN --build-arg be_protocol=$_BE_PROTOCOL --build-arg be_base_domain=$$BE_BASE_DOMAIN -t gcr.io/$PROJECT_ID/spino-web ./spino-web']
+    secretEnv: [ 'BFF_BASE_DOMAIN', 'BE_BASE_DOMAIN' ]
   # Push the container image to Container Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/$PROJECT_ID/spino-web']
@@ -22,8 +16,12 @@ steps:
     args: ['run', 'deploy', 'spino-web', '--image', 'gcr.io/$PROJECT_ID/spino-web', '--region', 'asia-northeast1']
 substitutions:
   _BFF_PROTOCOL: https
-  _BFF_BASE_DOMAIN: spino-web-hhamkls5ya-an.a.run.app
   _BE_PROTOCOL: https
-  _BE_BASE_DOMAIN: spino-be-hhamkls5ya-an.a.run.app
+availableSecrets:
+  secretManager:
+    - versionName: projects/spino-385712/secrets/SPINO_WEB_PROD_DOMAIN/versions/1
+      env: 'BFF_BASE_DOMAIN'
+    - versionName: projects/spino-385712/secrets/SPINO_BE_PROD_DOMAIN/versions/1
+      env: 'BE_BASE_DOMAIN'
 images:
   - gcr.io/$PROJECT_ID/spino-web
