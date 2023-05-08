@@ -4,10 +4,10 @@ const functions = require('@google-cloud/functions-framework');
 const Firestore = require('@google-cloud/firestore');
 const { Configuration, OpenAIApi } = require("openai");
 
-const db = new Firestore({
-    projectId: 'spino-385712',
-    keyFilename: './spino-batch-service-account-key.json',
-});
+// https://cloud.google.com/docs/authentication/production?hl=ja#providing_credentials_to_your_application
+// Create a client that uses Application Default Credentials (ADC):
+const firestore = new Firestore();
+
 const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
 });
@@ -32,7 +32,7 @@ functions.cloudEvent('updateWildlifeInfo', cloudEvent => {
         wildLife.createdAt = formattedDate
 
         // firestoreに保存
-        const docRef = db.collection('WildlifeInfo').doc();
+        const docRef = firestore.collection('WildlifeInfo').doc();
         docRef.set(wildLife).then(r => console.log(`${formattedDate}: success update!`));
         });
 });
