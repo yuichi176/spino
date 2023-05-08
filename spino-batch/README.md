@@ -1,4 +1,4 @@
-## デプロイ時
+## 手動デプロイ
 ```shell
 $ gcloud functions deploy update-wildlife-info-function \             
 --gen2 \
