@@ -32,7 +32,7 @@ functions.cloudEvent('updateWildlifeInfo', cloudEvent => {
         wildLife.createdAt = formattedDate
 
         // firestoreに保存
-        const docRef = firestore.collection('WildlifeInfo').doc();
+        const docRef = firestore.collection(process.env.COLLECTION_NAME).doc();
         docRef.set(wildLife).then(r => console.log(`${formattedDate}: success update!`));
         });
 });
