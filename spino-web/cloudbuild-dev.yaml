@@ -7,14 +7,13 @@ steps:
     entrypoint: 'bash'
     args: [
       '-c',
-      'docker',
-      'build',
-      '--build-arg', 'bff_protocol=$_BFF_PROTOCOL',
-      '--build-arg', 'bff_base_domain=$$BFF_BASE_DOMAIN',
-      '--build-arg', 'be_protocol=$_BE_PROTOCOL',
-      '--build-arg', 'be_base_domain=$$BE_BASE_DOMAIN',
-      '-t', 'gcr.io/$PROJECT_ID/spino-web-dev',
-      './spino-web'
+      'docker build \
+      --build-arg bff_protocol=$_BFF_PROTOCOL \
+      --build-arg bff_base_domain=$$BFF_BASE_DOMAIN \
+      --build-arg', 'be_protocol=$_BE_PROTOCOL \
+      --build-arg' 'be_base_domain=$$BE_BASE_DOMAIN \
+      -t gcr.io/$PROJECT_ID/spino-web-dev \
+      ./spino-web'
     ]
     secretEnv: [ 'BFF_BASE_DOMAIN', 'BE_BASE_DOMAIN' ]
   # Push the container image to Container Registry
