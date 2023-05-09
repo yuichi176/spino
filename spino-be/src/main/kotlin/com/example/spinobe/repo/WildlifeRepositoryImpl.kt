@@ -1,15 +1,17 @@
 package com.example.spinobe.repo
 
+import com.example.spinobe.configuration.FirestoreProperties
 import com.example.spinobe.openapi.model.WildlifeInfo
 import com.google.cloud.firestore.Firestore
 import org.springframework.stereotype.Repository
 
 @Repository
 class WildlifeRepositoryImpl(
-    private val db: Firestore
+    private val db: Firestore,
+    private val firestoreProperties: FirestoreProperties
 ) : WildlifeRepository {
 
-    val wildlireInfoCollectionRef = db.collection("WildlifeInfo")
+    val wildlireInfoCollectionRef = db.collection(firestoreProperties.collectionName)
 
     override fun findByDate(date: String): WildlifeInfo {
         val future = wildlireInfoCollectionRef.whereEqualTo("createdAt", date).get()

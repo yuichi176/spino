@@ -11,6 +11,6 @@ steps:
   # Deploy container image to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
-    args: ['run', 'deploy', 'spino-be', '--image', 'gcr.io/$PROJECT_ID/spino-be', '--region', 'asia-northeast1']
+    args: ['run', 'deploy', 'spino-be', '--image', 'gcr.io/$PROJECT_ID/spino-be', '--region', 'asia-northeast1', '--set-env-vars', 'COLLECTION_NAME=WildlifeInfo']
 images:
   - gcr.io/$PROJECT_ID/spino-be
