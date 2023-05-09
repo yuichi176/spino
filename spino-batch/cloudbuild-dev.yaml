@@ -1,15 +1,12 @@
 steps:
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    args:
-      - gcloud
-      - functions
-      - deploy
-      - update-wildlife-info-function-dev
-      - --set-env-vars
-      - COLLECTION_NAME=WildlifeInfo-beta
-      - --gen2
-      - --runtime=nodejs18
-      - --region=asia-northeast1
-      - --source=./spino-batch
-      - --entry-point=updateWildlifeInfo
-      - --trigger-topic=update-wildlife-info
+    args: [
+      'gcloud', 'functions', 'deploy', 'update-wildlife-info-function-dev'
+      '--gen2',
+      '--runtime=nodejs18',
+      '--region=asia-northeast1',
+      '--source=./spino-batch',
+      '--entry-point=updateWildlifeInfo',
+      '--trigger-topic=update-wildlife-info',
+      '--set-env-vars', 'COLLECTION_NAME=WildlifeInfo-dev'
+    ]
