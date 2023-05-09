@@ -5,7 +5,8 @@ steps:
       - functions
       - deploy
       - update-wildlife-info-function-dev
-      - --set-env-vars COLLECTION_NAME=WildlifeInfo-beta
+      - --set-env-vars
+      - COLLECTION_NAME=WildlifeInfo-beta
       - --gen2
       - --runtime=nodejs18
       - --region=asia-northeast1
