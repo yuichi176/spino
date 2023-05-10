@@ -6,7 +6,9 @@ $ gcloud functions deploy update-wildlife-info-function \
 --region=asia-northeast1 \
 --source=. \
 --entry-point=updateWildlifeInfo \
---trigger-topic=update-wildlife-info
+--trigger-topic=update-wildlife-info \
+--set-env-vars \
+COLLECTION_NAME=WildlifeInfo
 ```
 
 ## イベントのパブリッシュ
