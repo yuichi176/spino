@@ -30,6 +30,9 @@ ENV NEXT_PUBLIC_BE_BASE_DOMAIN=${be_base_domain}
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+# openapi-generator-cliを実行用にjreをインストール
+RUN apt-get -y install default-jre
+
 RUN npm run build
 
 # Production image, copy all the files and run next
