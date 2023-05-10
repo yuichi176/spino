@@ -13,6 +13,14 @@ RUN \
   else echo "Lockfile not found." && exit 1; \
   fi
 
+# api-client生成用コンテナ
+FROM alpine:latest AS api-client-generator
+RUN apk add --no-cache openjdk8-jre nodejs nodejs-npm
+WORKDIR /app
+
+COPY api-schema package.json package-lock.json openapitools.json ./
+RUN npm run generate-typescript-axios
+
 # Rebuild the source code only when needed
 FROM base AS builder
 WORKDIR /app
@@ -28,10 +36,8 @@ ENV NEXT_PUBLIC_BE_PROTOCOL=${be_protocol}
 ENV NEXT_PUBLIC_BE_BASE_DOMAIN=${be_base_domain}
 
 COPY --from=deps /app/node_modules ./node_modules
+COPY --from=api-client-generator /app/gen-src ./gen-src
 COPY . .
-
-# openapi-generator-cliを実行用にjreをインストール
-RUN apt-get -y install default-jre
 
 RUN npm run build
 
