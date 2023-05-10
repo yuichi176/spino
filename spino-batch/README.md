@@ -10,6 +10,11 @@ $ gcloud functions deploy update-wildlife-info-function \
 ```
 
 ## イベントのパブリッシュ
+### 本番環境
 ```shell
 $ gcloud pubsub topics publish update-wildlife-info --message="test"
+```
+### 開発環境
+```shell
+$ gcloud pubsub topics publish update-wildlife-info-dev --message="test"
 ```

@@ -14,10 +14,9 @@ const configuration = new Configuration({
 
 functions.cloudEvent('updateWildlifeInfo', cloudEvent => {
 
-    // 明日の日付を取得 'YYYY-MM-DD'
-    const today = new Date();
-    const tomorrow = new Date(today);
-    tomorrow.setDate(today.getDate() + 1);
+    // 明日の日付を取得 'YYYY-MM-DD'形式
+    const timezoneOffset = 9; // UTC+9を表すタイムゾーンオフセット（単位は時間）
+    const tomorrow = new Date(Date.now() + (24 * 60 * 60 * 1000) + (timezoneOffset * 60 * 60 * 1000));
     const formattedDate = tomorrow.toISOString().slice(0, 10);
 
     // chatGPTから生物情報を生成

@@ -13,5 +13,3 @@ steps:
       - --trigger-topic=update-wildlife-info
       - --set-env-vars
       - COLLECTION_NAME=WildlifeInfo
-      - --set-env-vars
-      - TZ=Asia/Tokyo
