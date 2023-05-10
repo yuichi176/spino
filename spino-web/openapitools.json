@@ -6,7 +6,7 @@
     "generators": {
       "typescript-axios": {
         "generatorName": "typescript-axios",
-        "inputSpec": "../api-schema/openapi.yaml",
+        "inputSpec": "./api-schema/openapi.yaml",
         "output": "./gen-src",
         "additionalProperties": {
           "withSeparateModelsAndApi": "true",

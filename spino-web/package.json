@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "npm run generate-typescript-axios && next dev",
+    "build": "npm run generate-typescript-axios && next build",
     "start": "next start",
     "lint": "next lint",
-    "generate-typescript-axios": "openapi-generator-cli generate --generator-key typescript-axios"
+    "generate-typescript-axios": "openapi-generator-cli generate --generator-key typescript-axios",
+    "copy-apischema": "node -e \"require('fs-extra').copySync('../api-schema', './api-schema')\""
   },
   "dependencies": {
     "@emotion/react": "^11.11.0",
@@ -30,6 +31,7 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
-    "@openapitools/openapi-generator-cli": "^2.6.0"
+    "@openapitools/openapi-generator-cli": "^2.6.0",
+    "fs-extra": "^11.1.1"
   }
 }
