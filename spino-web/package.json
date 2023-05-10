@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "npm run generate-typescript-axios && next dev",
-    "build": "npm run generate-typescript-axios && next build",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "generate-typescript-axios": "openapi-generator-cli generate --generator-key typescript-axios",
