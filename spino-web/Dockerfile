@@ -14,11 +14,14 @@ RUN \
   fi
 
 # api-client生成用コンテナ
-FROM alpine:latest AS api-client-generator
-RUN apk add --no-cache openjdk8-jre nodejs nodejs-npm
+FROM node:14-alpine AS api-client-generator
+RUN apk add --no-cache openjdk8-jre
 WORKDIR /app
 
-COPY api-schema package.json package-lock.json openapitools.json ./
+COPY --from=deps /app/node_modules ./node_modules
+COPY api-schema ./api-schema
+COPY package.json package-lock.json openapitools.json ./
+
 RUN npm run generate-typescript-axios
 
 # Rebuild the source code only when needed
