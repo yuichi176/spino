@@ -1,15 +1,13 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# spino-web
 
-## Getting Started
+## Runtime
+* Node.js 18
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Environment Variables
+### Build Environment Variables
+| Name                        | Description    |
+|:----------------------------|:---------------|
+| NEXT_PUBLIC_BFF_PROTOCOL    | BFFサーバ接続プロトコル  |
+| NEXT_PUBLIC_BE_PROTOCOL     | BEサーバ接続プロトコル   |
+| NEXT_PUBLIC_BFF_BASE_DOMAIN | 接続先BFFサーバのドメイン |
+| NEXT_PUBLIC_BE_BASE_DOMAIN  | 接続先BEサーバのドメイン  |

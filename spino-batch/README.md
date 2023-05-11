@@ -1,4 +1,17 @@
-## 手動デプロイ
+# spino-batch
+
+## Runtime
+* Node.js 18
+
+## Environment Variables
+### Runtime Environment Variables
+| Name            | Description         |
+|:----------------|:--------------------|
+| COLLECTION_NAME | 接続先のfirestoreコレクション |
+| OPENAI_API_KEY  | OpenAI APIキー        |
+
+## Command
+### Manual Deploy
 ```shell
 $ gcloud functions deploy update-wildlife-info-function \             
 --gen2 \
@@ -11,12 +24,12 @@ $ gcloud functions deploy update-wildlife-info-function \
 COLLECTION_NAME=WildlifeInfo
 ```
 
-## イベントのパブリッシュ
-### 本番環境
+### Publish Event 
+#### to prod env
 ```shell
-$ gcloud pubsub topics publish update-wildlife-info --message="test"
+$ gcloud pubsub topics publish update-wildlife-info --message="test-prod"
 ```
-### 開発環境
+#### to dev env
 ```shell
-$ gcloud pubsub topics publish update-wildlife-info-dev --message="test"
+$ gcloud pubsub topics publish update-wildlife-info-dev --message="test-dev"
 ```
