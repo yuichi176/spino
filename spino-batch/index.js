@@ -27,11 +27,17 @@ functions.cloudEvent('updateWildlifeInfo', cloudEvent => {
         temperature: 0.8,
         max_tokens: 500,
     }).then((response) => {
-        const wildLife = JSON.parse(response.data.choices[0].text);
-        wildLife.createdAt = formattedDate
+        try {
+            const wildLife = JSON.parse(response.data.choices[0].text);
+            wildLife.createdAt = formattedDate
 
-        // firestoreに保存
-        const docRef = firestore.collection(process.env.COLLECTION_NAME).doc();
-        docRef.set(wildLife).then(r => console.log(`${formattedDate}: success update!`));
-        });
+            // firestoreに保存
+            const docRef = firestore.collection(process.env.COLLECTION_NAME).doc();
+            docRef.set(wildLife).then(r => console.log(`${formattedDate}: success update!`));
+        } catch (error) {
+            console.error(error)
+            // These WILL be reported to Error Reporting
+            throw new Error(error)
+        }
+    });
 });
