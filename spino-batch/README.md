@@ -27,9 +27,9 @@ COLLECTION_NAME=WildlifeInfo
 ### Publish Event 
 #### to prod env
 ```shell
-$ gcloud pubsub topics publish update-wildlife-info --message="test-prod"
+gcloud pubsub topics publish update-wildlife-info --message="test-prod"
 ```
 #### to dev env
 ```shell
-$ gcloud pubsub topics publish update-wildlife-info-dev --message="test-dev"
+gcloud pubsub topics publish update-wildlife-info-dev --message="test-dev"
 ```
