@@ -6,7 +6,6 @@ import { env } from '@/config/env'
 import useSWRImmutable from "swr/immutable";
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-import Link from "next/link";
 
 export default function Home() {
   const [date, setDate] = useState(getToday())
@@ -49,7 +48,7 @@ export default function Home() {
     <main
       className="flex flex-col justify-center items-center tracking-wide"
     >
-      <div className="w-auto h-[844px] max-w-[390px] bg-ty-background relative mt-[50px]">
+      <div className="w-auto h-[844px] max-w-[390px] bg-ty-background relative md:mt-[50px]">
         <img src="/images/ty-logo.png" alt="today's wildlife logo" className="absolute top-[90px] left-1/2 translate-x-[-50%]" />
         <div className="mt-[200px] mx-auto pl-[5px] w-[60%] min-w-[250px]  font-kosugi-maru">
           <h1 className="text-center text-[22px] mb-[5px]"><span className="text-highlight-blue">{wildlife?.name}</span></h1>
