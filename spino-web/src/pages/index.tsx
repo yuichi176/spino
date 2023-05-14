@@ -49,7 +49,7 @@ export default function Home() {
     <main
       className="flex flex-col justify-center items-center tracking-wide"
     >
-      <div className="w-auto h-[844px] max-w-[390px] bg-ty-background relative">
+      <div className="w-auto h-[844px] max-w-[390px] bg-ty-background relative mt-[50px]">
         <img src="/images/ty-logo.png" alt="today's wildlife logo" className="absolute top-[90px] left-1/2 translate-x-[-50%]" />
         <div className="mt-[200px] mx-auto pl-[5px] w-[60%] min-w-[250px]  font-kosugi-maru">
           <h1 className="text-center text-[22px] mb-[5px]"><span className="text-highlight-blue">{wildlife?.name}</span></h1>
