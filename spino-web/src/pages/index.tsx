@@ -47,17 +47,17 @@ export default function Home() {
 
   return (
     <main
-      className="w-full h-[844px] max-w-[390px] flex flex-col justify-center items-center"
+      className="flex flex-col justify-center items-center"
     >
-      <div className="h-full bg-ty-background relative">
-        <img src="/images/ty-logo.png" alt="today's wildlife logo" className="absolute top-[90px] left-[105px]" />
-        <div className="pt-[195px] px-[75px] font-kosugi-maru">
+      <div className="w-auto h-[844px] max-w-[390px] bg-ty-background relative">
+        <img src="/images/ty-logo.png" alt="today's wildlife logo" className="absolute top-[90px] left-1/2 translate-x-[-50%]" />
+        <div className="mt-[200px] mx-auto pl-[5px] w-[60%] min-w-[250px]  font-kosugi-maru">
           <h1 className="text-center text-[22px] mb-[5px]"><span className="text-highlight-blue">{wildlife?.name}</span></h1>
-          <p className="text-center text-[14px] text-[#1C77A6] mb-[15px] underline underline-offset-4">{wildlife?.habitat}</p>
-          <p className="text-[14px] text-[#164681] mb-[15px]">{wildlife?.description}</p>
+          <p className="text-center text-[14px] text-[#1C77A6] mb-[20px] underline underline-offset-4">{wildlife?.habitat}</p>
+          <p className="text-[14px] text-[#164681] mb-[15px] tracking-wide">{wildlife?.description}</p>
           <p className="text-[14px] text-[#164681]">{wildlife?.trivia}</p>
         </div>
-        <div className="absolute top-[610px] left-[95px] flex items-center font-kosugi-maru">
+        <div className="absolute top-[610px] left-1/2 translate-x-[-50%] flex items-center font-kosugi-maru">
           <div>
             {isBefore?
                 <div className="flex items-center cursor-pointer" onClick={getBefore}>
@@ -77,11 +77,11 @@ export default function Home() {
                 <div className="flex items-center cursor-pointer" onClick={getNext}>
                   <ArrowRightIcon style={{ color: '#D7494A', fontSize: '30px' }} />
                   <p className="text-[12px]">next</p>
-                </div> : <div></div>
+                </div> : <div className="w-[54px]"></div>
             }
           </div>
         </div>
-        <p className="absolute top-[685px] left-[135px] text-[8px]">© 2023 Yuichi Sugiyama.</p>
+        <p className="absolute top-[685px] left-1/2 translate-x-[-50%] text-[8px]">© 2023 Yuichi Sugiyama.</p>
       </div>
     </main>
   )

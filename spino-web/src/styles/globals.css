@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 body {
-    min-width: 390px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,6 +17,7 @@ body {
 
 .bg-ty-background {
     background-image: url('/images/ty-background.png');
+    background-position:center bottom;
     background-size: cover;
 }
 
