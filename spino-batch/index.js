@@ -23,7 +23,7 @@ functions.cloudEvent('updateWildlifeInfo', cloudEvent => {
     const openai = new OpenAIApi(configuration);
     openai.createCompletion({
         model: "text-davinci-003",
-        prompt: "実在する動物を紹介してください。次のJSON文字列形式で日本語で出力してください。`{\"name\":\"名前\",\"habitat\":\"生息地(国・地域)\",\"description\":\"説明(300文字以内)\",\"trivia\":\"豆知識(200文字以内)\"}`",
+        prompt: "実在する動物を紹介してください。次のJSON文字列形式で日本語で出力してください。`{\"name\":\"名前\",\"habitat\":\"生息地(国・地域)\",\"description\":\"説明(150文字以内)\",\"trivia\":\"豆知識(100文字以内)\"}`",
         temperature: 0.8,
         max_tokens: 500,
     }).then((response) => {
