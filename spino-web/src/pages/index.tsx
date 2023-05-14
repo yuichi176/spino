@@ -3,9 +3,10 @@ import {getBeforeDate, getNextDate, getToday} from "@/utils";
 import {WildlifeInfo} from "../../gen-src";
 import axios from "axios";
 import { env } from '@/config/env'
-import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import useSWRImmutable from "swr/immutable";
+import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import Link from "next/link";
 
 export default function Home() {
   const [date, setDate] = useState(getToday())
@@ -21,7 +22,7 @@ export default function Home() {
         <div className="bouncybox">
           <div className="bouncy"></div>
         </div>
-        <p>loading</p>
+        <p>loading...</p>
       </div>
   )
   if (error) return <div>Failed to load</div>;
@@ -46,34 +47,41 @@ export default function Home() {
 
   return (
     <main
-      className="flex flex-col items-center justify-between py-10 px-5"
+      className="w-full h-[844px] max-w-[390px] flex flex-col justify-center items-center"
     >
-      <h1 className="text-lg mb-5">本日のいきもの</h1>
-      <div className="max-w-md h-[500px] shadow-#1 box-border py-8 px-10 rounded-md mb-5">
-        <div　className="tracking-wider">
-          <p className="text-xs mb-2">{wildlife?.createdAt}</p>
-          <div className="mb-5">
-            <p className="text-lg font-bold">{wildlife?.name}</p>
-            <p className="text-sm">{wildlife?.habitat}</p>
-          </div>
-          <p className="mb-5 text-sm">{wildlife?.description}</p>
+      <div className="h-full bg-ty-background relative">
+        <img src="/images/ty-logo.png" alt="today's wildlife logo" className="absolute top-[90px] left-[105px]" />
+        <div className="pt-[195px] px-[75px] font-kosugi-maru">
+          <h1 className="text-center text-[22px] mb-[5px]"><span className="text-highlight-blue">{wildlife?.name}</span></h1>
+          <p className="text-center text-[14px] text-[#1C77A6] mb-[15px] underline underline-offset-4">{wildlife?.habitat}</p>
+          <p className="text-[14px] text-[#164681] mb-[15px]">{wildlife?.description}</p>
+          <p className="text-[14px] text-[#164681]">{wildlife?.trivia}</p>
+        </div>
+        <div className="absolute top-[610px] left-[95px] flex items-center font-kosugi-maru">
           <div>
-            <h1 className="text-[#008080] font-bold">豆知識</h1>
-            <p className="text-sm">{wildlife?.trivia}</p>
+            {isBefore?
+                <div className="flex items-center cursor-pointer" onClick={getBefore}>
+                  <p className="text-[12px]">back</p>
+                  <ArrowLeftIcon style={{ color: '#D7494A', fontSize: '30px' }} />
+                </div> : <div className="w-[54px]"></div>
+            }
+          </div>
+          <div className="flex flex-col justify-between items-center w-[90px]">
+            <a href ={`https://ja.wikipedia.org/wiki/${wildlife?.name}`} target="_blank" rel="noopener noreferrer">
+              <img src="/images/ty-icon1.png" alt="today's wildlife icon" className="w-[40px]" />
+              <p className="text-[10px] text-highlight-green">Who am I?</p>
+            </a>
+          </div>
+          <div>
+            {isNext?
+                <div className="flex items-center cursor-pointer" onClick={getNext}>
+                  <ArrowRightIcon style={{ color: '#D7494A', fontSize: '30px' }} />
+                  <p className="text-[12px]">next</p>
+                </div> : <div></div>
+            }
           </div>
         </div>
-      </div>
-      <div className="w-full max-w-md flex justify-between">
-        {isBefore?
-          <div className="cursor-pointer" onClick={getBefore}>
-          <NavigateBeforeIcon />
-          </div> : <div></div>
-        }
-        {isNext?
-            <div className="cursor-pointer" onClick={getNext}>
-              <NavigateNextIcon />
-            </div> : <div></div>
-        }
+        <p className="absolute top-[685px] left-[135px] text-[8px]">© 2023 Yuichi Sugiyama.</p>
       </div>
     </main>
   )

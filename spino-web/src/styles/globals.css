@@ -3,7 +3,30 @@
 @tailwind utilities;
 
 body {
+    min-width: 390px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+@media (min-width: 390px) {
+    body {
+        background-color: #F5EFCA;
+    }
+}
+
+.bg-ty-background {
+    background-image: url('/images/ty-background.png');
+    background-size: cover;
+}
+
+.text-highlight-blue {
+    background: linear-gradient(transparent 30%, #E1FFF2);
+}
+
+.text-highlight-green {
+    background: linear-gradient(transparent 50%, #83BD9C);
 }
 
 .bouncybox {
