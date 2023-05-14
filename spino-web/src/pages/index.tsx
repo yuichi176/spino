@@ -47,14 +47,14 @@ export default function Home() {
 
   return (
     <main
-      className="flex flex-col justify-center items-center"
+      className="flex flex-col justify-center items-center tracking-wide"
     >
       <div className="w-auto h-[844px] max-w-[390px] bg-ty-background relative">
         <img src="/images/ty-logo.png" alt="today's wildlife logo" className="absolute top-[90px] left-1/2 translate-x-[-50%]" />
         <div className="mt-[200px] mx-auto pl-[5px] w-[60%] min-w-[250px]  font-kosugi-maru">
           <h1 className="text-center text-[22px] mb-[5px]"><span className="text-highlight-blue">{wildlife?.name}</span></h1>
           <p className="text-center text-[14px] text-[#1C77A6] mb-[20px] underline underline-offset-4">{wildlife?.habitat}</p>
-          <p className="text-[14px] text-[#164681] mb-[15px] tracking-wide">{wildlife?.description}</p>
+          <p className="text-[14px] text-[#164681] mb-[15px]">{wildlife?.description}</p>
           <p className="text-[14px] text-[#164681]">{wildlife?.trivia}</p>
         </div>
         <div className="absolute top-[610px] left-1/2 translate-x-[-50%] flex items-center font-kosugi-maru">
