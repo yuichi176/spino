@@ -15,7 +15,6 @@ export default function Document() {
           <meta charSet='utf-8' />
           <meta name='description' content='毎日生き物を紹介するWebアプリケーションです。' />
           <meta name="keywords" content="動物, 生き物, 紹介, Webアプリケーション" />
-          <title>Today's Wildlife</title>
       </Head>
       <body>
         <Main />
