@@ -21,7 +21,7 @@ export default function Home() {
         <div className="bouncybox">
           <div className="bouncy"></div>
         </div>
-        <p>loading...</p>
+        <p className="font-kosugi-maru">loading...</p>
       </div>
   )
   if (error) return <div>Failed to load</div>;
@@ -49,8 +49,8 @@ export default function Home() {
       className="flex flex-col justify-center items-center tracking-wide"
     >
       <div className="w-auto h-[844px] max-w-[390px] bg-ty-background relative md:mt-[50px]">
-        <img src="/images/ty-logo.png" alt="today's wildlife logo" className="absolute top-[90px] left-1/2 translate-x-[-50%]" />
-        <div className="mt-[200px] mx-auto pl-[5px] w-[60%] min-w-[250px]  font-kosugi-maru">
+        <img src="/images/ty-logo.PNG" alt="today's wildlife logo" className="w-[184px] absolute top-[90px] left-1/2 translate-x-[-50%]" />
+        <div className="mt-[200px] mx-auto pl-[5px] w-[60%] min-w-[250px] font-kosugi-maru">
           <h1 className="text-center text-[22px] mb-[5px]"><span className="text-highlight-blue">{wildlife?.name}</span></h1>
           <p className="text-center text-[14px] text-[#1C77A6] mb-[20px] underline underline-offset-4">{wildlife?.habitat}</p>
           <p className="text-[14px] text-[#164681] mb-[15px]">{wildlife?.description}</p>
@@ -59,24 +59,24 @@ export default function Home() {
         <div className="absolute top-[610px] left-1/2 translate-x-[-50%] flex items-center font-kosugi-maru">
           <div>
             {isBefore?
-                <div className="flex items-center cursor-pointer" onClick={getBefore}>
-                  <p className="text-[12px]">back</p>
-                  <ArrowLeftIcon style={{ color: '#D7494A', fontSize: '30px' }} />
-                </div> : <div className="w-[54px]"></div>
+                <div className="w-[65px] flex justify-center items-center cursor-pointer">
+                  {/*<p className="text-[12px]">back</p>*/}
+                  <ArrowLeftIcon style={{ color: '#D7494A', fontSize: '40px' }} onClick={getBefore} />
+                </div> : <div className="w-[65px]"></div>
             }
           </div>
           <div className="flex flex-col justify-between items-center w-[90px]">
             <a href ={`https://ja.wikipedia.org/wiki/${wildlife?.name}`} target="_blank" rel="noopener noreferrer">
-              <img src="/images/ty-icon1.png" alt="today's wildlife icon" className="w-[40px]" />
-              <p className="text-[10px] text-highlight-green">Who am I?</p>
+              <img src="/images/ty-icon1.png" alt="today's wildlife icon" className="w-[40px] mx-auto" />
+              <p className="text-[10px] underline underline-offset-2 decoration-[#83BD9C] font-sans">Who am I?</p>
             </a>
           </div>
           <div>
             {isNext?
-                <div className="flex items-center cursor-pointer" onClick={getNext}>
-                  <ArrowRightIcon style={{ color: '#D7494A', fontSize: '30px' }} />
-                  <p className="text-[12px]">next</p>
-                </div> : <div className="w-[54px]"></div>
+                <div className="w-[65px] flex justify-center items-center cursor-pointer">
+                  <ArrowRightIcon style={{ color: '#D7494A', fontSize: '40px' }}  onClick={getNext} />
+                  {/*<p className="text-[12px]">next</p>*/}
+                </div> : <div className="w-[65px]"></div>
             }
           </div>
         </div>

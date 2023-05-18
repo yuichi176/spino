@@ -9,6 +9,7 @@ module.exports = {
     extend: {
     },
     fontFamily: {
+      'sans': ['ui-sans-serif', 'system-ui', 'sans-serif'],
       'kosugi-maru': ['Kosugi Maru', 'sans-serif']
     },
   },
