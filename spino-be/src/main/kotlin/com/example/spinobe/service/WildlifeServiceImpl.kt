@@ -2,7 +2,7 @@ package com.example.spinobe.service
 
 import com.example.spinobe.openapi.api.WildlifeApiService
 import com.example.spinobe.openapi.model.WildlifeInfo
-import com.example.spinobe.repo.WildlifeRepository
+import com.example.spinobe.repository.WildlifeRepository
 import org.springframework.stereotype.Service
 
 @Service

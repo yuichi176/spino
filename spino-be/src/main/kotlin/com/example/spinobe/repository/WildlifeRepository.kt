@@ -1,4 +1,4 @@
-package com.example.spinobe.repo
+package com.example.spinobe.repository
 
 import com.example.spinobe.openapi.model.WildlifeInfo
 
