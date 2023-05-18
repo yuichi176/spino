@@ -1,4 +1,7 @@
 steps:
+  # test
+  - name: 'gcr.io/cloud-builders/gradle'
+    args: ['test']
   # Copy api-schema dir to build dir
   - name: bash
     script: cp -r ./api-schema ./spino-be/api-schema

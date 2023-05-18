@@ -1,0 +1,4 @@
+steps:
+  # test
+  - name: 'gcr.io/cloud-builders/gradle'
+    args: ['test']
