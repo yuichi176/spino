@@ -6,11 +6,16 @@ plugins {
 	kotlin("jvm") version "1.6.21"
 	kotlin("plugin.spring") version "1.6.21"
 	id("org.openapi.generator") version "5.4.0"
+	id("application")
 }
 
 group = "com.example"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_17
+
+application {
+	mainClass.set("com.example.spinobe.SpinoBeApplication")
+}
 
 tasks.jar {
 	// xxx-plain.jarを生成しない設定
@@ -29,7 +34,11 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("com.google.cloud:google-cloud-firestore:3.7.9")
 
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.springframework.boot:spring-boot-starter-test"){
+		exclude(module = "mockito-core")
+	}
+	testImplementation("io.mockk:mockk:1.13.4")
+	testImplementation("org.assertj:assertj-core:3.24.2")
 }
 
 tasks.withType<KotlinCompile> {
