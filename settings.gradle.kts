@@ -1,3 +1,3 @@
-rootProject.name = "Spino"
+rootProject.name = "spino"
 
 include("spino-be")
