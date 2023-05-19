@@ -1,4 +1,5 @@
 steps:
-  # test
+  - name:
   - name: 'gcr.io/cloud-builders/gradle'
     args: ['test']
+    dir: spino-be
