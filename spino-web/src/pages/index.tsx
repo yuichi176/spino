@@ -27,7 +27,7 @@ export default function Home() {
         <div className="bouncybox">
           <div className="bouncy"></div>
         </div>
-        <p className="font-kosugi-maru">loading...</p>
+        <p className="font-kosugi-maru">　読み込み中...</p>
       </div>
   )
 
