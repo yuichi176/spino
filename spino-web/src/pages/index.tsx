@@ -65,7 +65,7 @@ export default function Home() {
             <div className="flex flex-col justify-between items-center w-[90px]">
               <a href ={`https://ja.wikipedia.org/wiki/${!error ? wildlife?.name : "レッサーパンダ"}`} target="_blank" rel="noopener noreferrer">
               <img src="/images/ty-icon1.png" alt="today's wildlife icon" className="w-[40px] mx-auto" />
-              <p className="font-kosugi-maru text-[10px] font-bold text-[#0e2c52] tracking-tight mt-[-3px] underline underline-offset-2 decoration-2 decoration-[#83BD9C]">check wiki</p>
+              <p className="font-kosugi-maru text-[10px] text-[#0e2c52] tracking-tight mt-[-3px] underline underline-offset-2 decoration-2 decoration-[#83BD9C]">check wiki</p>
               </a>
             </div>
             <div>
