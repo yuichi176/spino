@@ -10,7 +10,7 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 const firestore = new Firestore();
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash", systemInstruction: "You are an expert in wildlife.",});
 
 // const configuration = new Configuration({
 //     apiKey: process.env.OPENAI_API_KEY,
@@ -24,7 +24,7 @@ functions.cloudEvent('updateWildlifeInfo', async (cloudEvent) => {
         const formattedDate = tomorrow.toISOString().slice(0, 10);
 
         // 生物情報の生成
-        const prompt = "Please introduce real wildlifes in Japanese, not fictional ones.\\n\\n Using this JSON schema:\\n\\n WildLife = {\"name\": str, \"habitat\": str, \"description\": str, \"trivia: str\"}\\n\\n Ensure that the \"description\" and \"trivia\" fields are approximately 120 characters each.\\n\\n Return a `WildLife`"
+        const prompt = "Please introduce a real wildlife in Japanese. Each time, introduce a different species from various regions and classifications such as ハシビロコウ, ダチョウ.\\n\\n Using this JSON schema:\\n\\n WildLife = {\"name\": str, \"habitat\": str, \"description\": str, \"trivia: str\"}\\n\\n Ensure that the \"description\" and \"trivia\" fields are approximately 150 characters each.\\n\\n Return a `WildLife`"
         const result = await model.generateContent({
             contents: [
                 {
