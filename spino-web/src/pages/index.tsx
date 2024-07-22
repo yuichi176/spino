@@ -28,7 +28,7 @@ export default function Home() {
 
   const getBefore = () => {
     const beforeDate = getBeforeDate(date)
-    if (beforeDate === '2023-05-05') {
+    if (beforeDate === '2024-07-21') {
       setIsBefore(false)
     }
     setIsNext(true)
