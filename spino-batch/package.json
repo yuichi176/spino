@@ -10,6 +10,7 @@
   "dependencies": {
     "@google-cloud/firestore": "^6.5.0",
     "@google-cloud/functions-framework": "^3.0.0",
+    "@google/generative-ai": "^0.15.0",
     "openai": "^3.2.1"
   }
 }
