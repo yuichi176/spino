@@ -14,9 +14,9 @@ export default function Document() {
         <link rel="manifest" href="/favicons/site.webmanifest" />
         <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#5bbad5" />
         <meta name="msapplication-TileColor" content="#da532c" />
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#F5EFCA" />
         <meta charSet="utf-8" />
-        <meta name="description" content="毎日生き物を紹介するWebアプリケーションです。" />
+        <meta name="description" content="毎日生き物を紹介するWebアプリケーション" />
         <meta name="keywords" content="動物, 生き物, 紹介, Webアプリケーション" />
       </Head>
       <body>

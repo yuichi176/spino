@@ -1,0 +1,265 @@
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    height: 844px;
+    width: 390px;
+    background-image: url('/images/ty-background.JPG');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.logoContainer {
+    position: absolute;
+    width: 184px;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.ContentContainer {
+    position: absolute;
+    width: 240px;
+    top: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.name {
+    font-size: 22px;
+    background: linear-gradient(transparent 30%, #cdf3ff);
+    margin-bottom: 5px;
+}
+
+.habitat {
+    font-size: 14px;
+    text-align: center;
+    color: #1C77A6;
+    margin-bottom: 20px;
+    text-decoration-line: underline;
+    text-underline-offset: 4px;
+}
+
+.description {
+    font-size: 14px;
+    color: #123866;
+    margin-bottom: 15px;
+}
+
+.trivia {
+    font-size: 14px;
+    color: #123866;
+}
+
+.buttonContainer {
+    position: absolute;
+    top: 610px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.leftButton {
+    background: #D7494A;
+    height: calc(tan(60deg) * 20px / 2);
+    width: 12px;
+    clip-path: polygon(0 50%, 100% 0, 100% 100%);
+    transition: opacity 0.2s;
+}
+
+.leftButton:hover {
+    opacity: 0.8;
+}
+
+.leftButton:disabled {
+    background: #b2a0a0;
+}
+
+.rightButton {
+    background: #D7494A;
+    height: calc(tan(60deg) * 20px / 2);
+    width: 12px;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+    transition: opacity 0.2s;
+}
+
+.rightButton:hover {
+    opacity: 0.8;
+}
+
+.rightButton:disabled {
+    background: #d7c0c0;
+}
+
+.wikiLinkContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wikiLinkIcon {
+    width: 40px;
+}
+
+.wikiLinkText {
+    font-family: 'ui-sans-serif', sans-serif;
+    font-weight: bolder;
+    font-size: 10px;
+    color: #0e2c52;
+    text-decoration-line: underline;
+    text-underline-offset: 2px;
+    text-decoration-color: #83BD9C;
+    margin-top: -5px;
+}
+
+.copyRight {
+    position: absolute;
+    font-size: 8px;
+    top: 685px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'ui-sans-serif', sans-serif;
+    letter-spacing: 0.03em;
+}
+
+.loadingMessage {
+    position: absolute;
+    top: 380px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #252525;
+}
+
+.loader {
+    position: absolute;
+    top: 382px;
+    left: calc(50% + 53px);
+    transform: translateX(-50%);
+}
+
+.loader > div {
+    display: inline-block;
+    background-color: #252525;
+    width: 3px;
+    height: 3px;
+    border-radius: 100%;
+    margin: 2px;
+    animation-fill-mode: both;
+    -webkit-animation-fill-mode: both;
+}
+
+.loader > div:nth-child(1) {
+    animation: ball-pulse-sync 1.6s 0s infinite ease-in-out;
+}
+
+.loader > div:nth-child(2) {
+    animation: ball-pulse-sync 1.6s 0.4s infinite ease-in-out;
+}
+
+.loader > div:nth-child(3) {
+    animation: ball-pulse-sync 1.6s 0.8s infinite ease-in-out;
+}
+
+@keyframes ball-pulse-sync {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+@media (max-width: 450px) {
+    .main {
+        height: auto;
+    }
+
+    .container {
+        height: 844px;
+        width: 100%;
+    }
+
+    .logoContainer {
+        width: 190px;
+        top: 95px;
+    }
+
+    .ContentContainer {
+        top: 220px;
+    }
+
+    .buttonContainer {
+        top: 630px;
+    }
+
+    .copyRight {
+        top: 720px;
+    }
+}
+
+@media (max-width: 400px) {
+    .main {
+        height: auto;
+    }
+
+    .container {
+        height: 844px;
+        width: 100%;
+    }
+
+    .logoContainer {
+        width: 184px;
+        top: 90px;
+    }
+
+    .ContentContainer {
+        top: 210px;
+    }
+
+    .buttonContainer {
+        top: 610px;
+    }
+
+    .copyRight {
+        top: 685px;
+    }
+}
+
+@media (max-width: 380px) {
+    .main {
+        height: auto;
+    }
+
+    .container {
+        height: 844px;
+        width: 100%;
+    }
+
+    .logoContainer {
+        width: 170px;
+        top: 85px;
+    }
+
+    .ContentContainer {
+        top: 190px;
+    }
+
+    .buttonContainer {
+        top: 560px;
+    }
+
+    .copyRight {
+        top: 620px;
+    }
+}
