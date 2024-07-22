@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import {wildlifeClient} from "@/libs/api-client/wildlifeClient";
+import { wildlifeClient } from '@/libs/api-client/wildlifeClient'
 
 export default async function wildLifeHandler(req: NextApiRequest, res: NextApiResponse) {
   const { method } = req
