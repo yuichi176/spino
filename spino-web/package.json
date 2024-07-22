@@ -1,6 +1,7 @@
 {
   "name": "spino-web",
   "version": "1.0.0",
+  "type": "module",
   "private": true,
   "engines": {
     "node": ">=16.0.0"
