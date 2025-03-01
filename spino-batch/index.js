@@ -3,7 +3,6 @@
 const functions = require('@google-cloud/functions-framework');
 const Firestore = require('@google-cloud/firestore');
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-// const { Configuration, OpenAIApi } = require("openai");
 
 // https://cloud.google.com/docs/authentication/production?hl=ja#providing_credentials_to_your_application
 // Create a client that uses Application Default Credentials (ADC):
@@ -11,10 +10,6 @@ const firestore = new Firestore();
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash", systemInstruction: "You are an expert in wildlife.",});
-
-// const configuration = new Configuration({
-//     apiKey: process.env.OPENAI_API_KEY,
-// });
 
 functions.cloudEvent('updateWildlifeInfo', async (cloudEvent) => {
     try {
@@ -53,26 +48,4 @@ functions.cloudEvent('updateWildlifeInfo', async (cloudEvent) => {
         console.error(error);
         throw new Error(error)
     }
-
-    // openAI API から生物情報を生成
-    // const openai = new OpenAIApi(configuration);
-    // openai.createCompletion({
-    //     model: "text-davinci-003",
-    //     prompt: "実在する動物を紹介してください。次のJSON文字列形式で日本語で出力してください。`{\"name\":\"名前\",\"habitat\":\"生息地(国・地域)\",\"description\":\"説明(150文字以内)\",\"trivia\":\"豆知識(100文字以内)\"}`",
-    //     temperature: 0.8,
-    //     max_tokens: 500,
-    // }).then((response) => {
-    //     try {
-    //         console.log(response.data.choices[0].text)
-    //         const wildLife = JSON.parse(response.data.choices[0].text);
-    //         wildLife.createdAt = formattedDate
-    //
-    //         // firestoreに保存
-    //         const docRef = firestore.collection(process.env.COLLECTION_NAME).doc();
-    //         docRef.set(wildLife).then(r => console.log(`${formattedDate}: success update!`));
-    //     } catch (error) {
-    //         // These WILL be reported to Error Reporting
-    //         throw new Error(error)
-    //     }
-    // });
 });
