@@ -119,7 +119,7 @@ export default function Home() {
             disabled={!isNext}
           ></button>
         </div>
-        <p className={styles.copyRight}>© 2024 Yuichi Sugiyama.</p>
+        <p className={styles.copyRight}>© 2025 Yuichi Sugiyama.</p>
       </div>
     </main>
   )
