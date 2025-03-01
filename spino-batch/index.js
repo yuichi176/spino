@@ -9,7 +9,7 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 const firestore = new Firestore();
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash", systemInstruction: "You are an expert in wildlife.",});
+const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash", systemInstruction: "You are an expert in wildlife.",});
 
 functions.cloudEvent('updateWildlifeInfo', async (cloudEvent) => {
     try {
