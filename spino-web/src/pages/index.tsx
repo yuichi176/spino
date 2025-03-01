@@ -57,7 +57,7 @@ export default function Home() {
             <div></div>
             <div></div>
           </div>
-          <p className={styles.copyRight}>© 2023 Yuichi Sugiyama.</p>
+          <p className={styles.copyRight}>© 2025 Yuichi Sugiyama.</p>
         </div>
       </main>
     )
