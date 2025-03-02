@@ -6,7 +6,7 @@ steps:
       - deploy
       - update-wildlife-info-function
       - --gen2
-      - --runtime=nodejs18
+      - --runtime=nodejs20
       - --region=asia-northeast1
       - --source=./spino-batch
       - --entry-point=updateWildlifeInfo
